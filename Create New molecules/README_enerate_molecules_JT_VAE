@@ -1,0 +1,18 @@
+Requirements:
+Install the necessary libraries:
+
+pip install rdkit
+pip install torch
+pip install git+https://github.com/wengong-jin/icml18-jtnn.git
+
+Instructions:
+Preprocess your dataset:
+python create_vocab.py --dataset your_smiles_dataset.csv
+python preprocess_data.py --dataset your_smiles_dataset.csv --vocab vocab.txt
+
+Train the JT-VAE model:
+python train_jtvae.py --train_path processed_smiles.txt --vocab_path vocab.txt --save_dir models
+
+Generate new molecules:
+python generate_molecules.py "CCO" --num_samples 10 --output_dir output --vocab_path vocab.txt --model_path models/model_epoch_10.pth
+
